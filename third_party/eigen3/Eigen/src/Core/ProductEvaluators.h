@@ -183,8 +183,8 @@ struct product_evaluator_dispatcher<Product<Lhs, Rhs>, CoeffBasedProduct<LhsNest
   {
     PacketScalar res;
     typedef etor_product_packet_impl<Flags&RowMajorBit ? RowMajor : ColMajor,
-				     Unroll ? InnerSize-1 : Dynamic,
-				     LhsEtorType, RhsEtorType, PacketScalar, LoadMode> PacketImpl;
+                     Unroll ? InnerSize-1 : Dynamic,
+                     LhsEtorType, RhsEtorType, PacketScalar, LoadMode> PacketImpl;
     PacketImpl::run(row, col, m_lhsImpl, m_rhsImpl, m_innerDim, res);
     return res;
   }

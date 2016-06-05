@@ -161,7 +161,7 @@ class QuaternionBase : public RotationBase<Derived, 3>
   bool isApprox(const QuaternionBase<OtherDerived>& other, const RealScalar& prec = NumTraits<Scalar>::dummy_precision()) const
   { return coeffs().isApprox(other.coeffs(), prec); }
 
-	/** return the result vector of \a v through the rotation*/
+    /** return the result vector of \a v through the rotation*/
   EIGEN_STRONG_INLINE Vector3 _transformVector(Vector3 v) const;
 
   /** \returns \c *this with scalar type casted to \a NewScalarType

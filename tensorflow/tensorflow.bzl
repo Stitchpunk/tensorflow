@@ -26,7 +26,7 @@ def tf_android_core_proto_sources():
         "//tensorflow/core:framework/types.proto",
         "//tensorflow/core:lib/core/error_codes.proto",
         "//tensorflow/core:util/saved_tensor_slice.proto"
-	]
+    ]
 
 
 def if_cuda(a, b=[]):

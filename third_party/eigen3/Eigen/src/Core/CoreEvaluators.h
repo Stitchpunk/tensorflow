@@ -162,7 +162,7 @@ struct evaluator_impl<PlainObjectBase<Derived> >
   {
     if (IsRowMajor)
       return pstoret<Scalar, PacketScalar, StoreMode>
-	            (const_cast<Scalar*>(m_data) + row * m_outerStride.value() + col, x);
+                (const_cast<Scalar*>(m_data) + row * m_outerStride.value() + col, x);
     else
       return pstoret<Scalar, PacketScalar, StoreMode>
                     (const_cast<Scalar*>(m_data) + row + col * m_outerStride.value(), x);
@@ -501,14 +501,14 @@ struct evaluator_impl<CwiseBinaryOp<BinaryOp, Lhs, Rhs> >
   PacketScalar packet(Index row, Index col) const
   {
     return m_functor.packetOp(m_lhsImpl.template packet<LoadMode>(row, col),
-			      m_rhsImpl.template packet<LoadMode>(row, col));
+                  m_rhsImpl.template packet<LoadMode>(row, col));
   }
 
   template<int LoadMode>
   PacketScalar packet(Index index) const
   {
     return m_functor.packetOp(m_lhsImpl.template packet<LoadMode>(index),
-			      m_rhsImpl.template packet<LoadMode>(index));
+                  m_rhsImpl.template packet<LoadMode>(index));
   }
 
 protected:
@@ -593,7 +593,7 @@ struct evaluator_impl<MapBase<Derived, AccessorsType> >
   CoeffReturnType coeff(Index index) const 
   { 
     return coeff(RowsAtCompileTime == 1 ? 0 : index,
-		 RowsAtCompileTime == 1 ? index : 0);
+         RowsAtCompileTime == 1 ? index : 0);
   }
 
   Scalar& coeffRef(Index row, Index col) 
@@ -604,7 +604,7 @@ struct evaluator_impl<MapBase<Derived, AccessorsType> >
   Scalar& coeffRef(Index index) 
   { 
     return coeffRef(RowsAtCompileTime == 1 ? 0 : index,
-		    RowsAtCompileTime == 1 ? index : 0);
+            RowsAtCompileTime == 1 ? index : 0);
   }
  
   template<int LoadMode> 
@@ -618,7 +618,7 @@ struct evaluator_impl<MapBase<Derived, AccessorsType> >
   PacketReturnType packet(Index index) const 
   { 
     return packet<LoadMode>(RowsAtCompileTime == 1 ? 0 : index,
-			    RowsAtCompileTime == 1 ? index : 0);
+                RowsAtCompileTime == 1 ? index : 0);
   }
   
   template<int StoreMode> 
@@ -632,8 +632,8 @@ struct evaluator_impl<MapBase<Derived, AccessorsType> >
   void writePacket(Index index, const PacketScalar& x) 
   { 
     return writePacket<StoreMode>(RowsAtCompileTime == 1 ? 0 : index,
-				  RowsAtCompileTime == 1 ? index : 0,
-				  x);
+                  RowsAtCompileTime == 1 ? index : 0,
+                  x);
   }
  
 protected:
@@ -697,7 +697,7 @@ struct block_evaluator<ArgType, BlockRows, BlockCols, InnerPanel, /*HasDirectAcc
   CoeffReturnType coeff(Index index) const 
   { 
     return coeff(RowsAtCompileTime == 1 ? 0 : index,
-		 RowsAtCompileTime == 1 ? index : 0);
+         RowsAtCompileTime == 1 ? index : 0);
   }
 
   Scalar& coeffRef(Index row, Index col) 
@@ -708,7 +708,7 @@ struct block_evaluator<ArgType, BlockRows, BlockCols, InnerPanel, /*HasDirectAcc
   Scalar& coeffRef(Index index) 
   { 
     return coeffRef(RowsAtCompileTime == 1 ? 0 : index,
-		    RowsAtCompileTime == 1 ? index : 0);
+            RowsAtCompileTime == 1 ? index : 0);
   }
  
   template<int LoadMode> 
@@ -721,7 +721,7 @@ struct block_evaluator<ArgType, BlockRows, BlockCols, InnerPanel, /*HasDirectAcc
   PacketReturnType packet(Index index) const 
   { 
     return packet<LoadMode>(RowsAtCompileTime == 1 ? 0 : index,
-			    RowsAtCompileTime == 1 ? index : 0);
+                RowsAtCompileTime == 1 ? index : 0);
   }
   
   template<int StoreMode> 
@@ -734,8 +734,8 @@ struct block_evaluator<ArgType, BlockRows, BlockCols, InnerPanel, /*HasDirectAcc
   void writePacket(Index index, const PacketScalar& x) 
   { 
     return writePacket<StoreMode>(RowsAtCompileTime == 1 ? 0 : index,
-				  RowsAtCompileTime == 1 ? index : 0,
-				  x);
+                  RowsAtCompileTime == 1 ? index : 0,
+                  x);
   }
  
 protected:
@@ -1010,7 +1010,7 @@ struct evaluator_impl<Reverse<ArgType, Direction> >
   CoeffReturnType coeff(Index row, Index col) const
   {
     return m_argImpl.coeff(ReverseRow ? m_rows.value() - row - 1 : row,
-			   ReverseCol ? m_cols.value() - col - 1 : col);
+               ReverseCol ? m_cols.value() - col - 1 : col);
   }
 
   CoeffReturnType coeff(Index index) const
@@ -1021,7 +1021,7 @@ struct evaluator_impl<Reverse<ArgType, Direction> >
   Scalar& coeffRef(Index row, Index col)
   {
     return m_argImpl.coeffRef(ReverseRow ? m_rows.value() - row - 1 : row,
-			      ReverseCol ? m_cols.value() - col - 1 : col);
+                  ReverseCol ? m_cols.value() - col - 1 : col);
   }
 
   Scalar& coeffRef(Index index)
